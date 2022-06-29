@@ -1,0 +1,7 @@
+{
+    "broker":"host",
+    "port":1883,
+    "topic":"college",
+    "qos":1,
+    "log":"logs/mqtt_subscribe.log"
+}

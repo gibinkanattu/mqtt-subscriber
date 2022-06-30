@@ -9,6 +9,7 @@ def parse_argv(argv):
     return args
 flag=True
 def on_message(client, userdata, msg):
+    global flag
     msg_payload = msg.payload.decode("utf-8")
     print(msg_payload)
     if flag:
@@ -27,7 +28,7 @@ def main():
             port   = params.get("port")
             qos    = params.get("qos")
             log    = params.get("log")
-        logging.basicConfig(filename=log, level=logging.ERROR)
+        logging.basicConfig(filename=log, level=logging.DEBUG)
         try:
             client.connect(broker,port)
             client.subscribe(topic)
@@ -37,6 +38,8 @@ def main():
             logging.error(e)
     except Exception as e:
         print(e)
+    except KeyboardInterrupt:
+        logging.info('keyboard interupt')
 
 
 
